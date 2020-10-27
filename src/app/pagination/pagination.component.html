@@ -1,17 +1,16 @@
 <ul class="pag" (click)="onClickPag($event.target)">
-    <li class="pag__item pag__item--previous">
+    <li class="pag__item pag__item--previous"
+        (click)="currentPage = currentPage - 1">
         &#10094;
     </li>
-    <li class="pag__item pag__item--active">
-        1
+    <li *ngFor="let image of images; let i = index"
+        class="pag__item"
+        [ngClass]="{ 'pag__item--active': i === currentPage }" 
+        (click) = "currentPage = i">
+        {{ i + 1 }}
     </li>
-    <li class="pag__item">
-        2
-    </li>
-     <li class="pag__item">
-        3
-    </li>
-     <li class="pag__item pag__item--previous">
+     <li class="pag__item pag__item--next"
+        (click)="currentPage = currentPage + 1">
      &#10095;
     </li>  
 </ul>
